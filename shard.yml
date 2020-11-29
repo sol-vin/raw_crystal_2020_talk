@@ -1,0 +1,13 @@
+name: raw_crystal_2020_talk
+version: 0.1.0
+
+authors:
+  - your-name-here <your-email-here>
+
+targets:
+  raw_crystal_2020_talk:
+    main: src/raw_crystal_2020_talk.cr
+
+crystal: 0.35.1
+
+license: MIT
