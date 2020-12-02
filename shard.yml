@@ -2,11 +2,34 @@ name: raw_crystal_2020_talk
 version: 0.1.0
 
 authors:
-  - your-name-here <your-email-here>
+  - Ian Rash <ian@sol.vin>
+
+dependencies:
+  perlin_noise:
+    github: redcodefinal/perlin_noise
+  celestine:
+    github: redcodefinal/celestine
+  kemal:
+    github: kemalcr/kemal
+    branch: master
 
 targets:
-  raw_crystal_2020_talk:
-    main: src/raw_crystal_2020_talk.cr
+  app:
+    main: src/app.cr
+  sandbox:
+    main: src/sandbox.cr
+  mineshift0:
+    main: src/mineshift/stages/0.cr
+  mineshift1:
+    main: src/mineshift/stages/1.cr
+  mineshift2:
+    main: src/mineshift/stages/2.cr
+  mineshift3:
+    main: src/mineshift/stages/3.cr
+  mineshift4:
+    main: src/mineshift/stages/4.cr
+  mineshift5:
+    main: src/mineshift/stages/5.cr
 
 crystal: 0.35.1
 

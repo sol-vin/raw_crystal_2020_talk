@@ -1,0 +1,30 @@
+version: 2.0
+shards:
+  celestine:
+    git: https://github.com/redcodefinal/celestine.git
+    version: 0.6.0alpha+git.commit.cd039f54ed2574354bed81b12fae9d55e1e641f9
+
+  exception_page:
+    git: https://github.com/crystal-loot/exception_page.git
+    version: 0.1.4
+
+  kemal:
+    git: https://github.com/kemalcr/kemal.git
+    version: 0.27.0+git.commit.bf9f627ac789d2ebe573629904f02beb9e4089d5
+
+  kilt:
+    git: https://github.com/jeromegn/kilt.git
+    version: 0.4.0
+
+  myhtml:
+    git: https://github.com/kostya/myhtml.git
+    version: 1.5.2
+
+  perlin_noise:
+    git: https://github.com/redcodefinal/perlin_noise.git
+    version: 0.1.0+git.commit.79c452d46884382c8f15625e0ea37ce3e867b360
+
+  radix:
+    git: https://github.com/luislavena/radix.git
+    version: 0.3.9
+

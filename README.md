@@ -1,27 +1,30 @@
-# raw_crystal_2020_talk
+# Generative Art, Crystal, and Celeatine - A Raw Crystal 2020 Talk
 
-TODO: Write a description here
+Project for the talk "Generative Art, Crystal, and Celestine.
+
+[Register Here for the event](https://www.eventbrite.co.uk/e/raw-crystal-2020-tickets-127439094763)
+
+## Slides
+
+Available in [slides](/slides)
 
 ## Installation
 
-TODO: Write installation instructions here
+For examples and breakdown of Mineshift:
+
+```
+shards build app && ./bin/app [port number or blank for 3000]
+```
+
+For compiling your sandbox project
+```
+shards build sandbox && ./bin/sandbox [port number or blank for 3000]
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Open a web browser and navigate to `localhost`.
 
-## Development
+## Author
 
-TODO: Write development instructions here
-
-## Contributing
-
-1. Fork it (<https://github.com/your-github-user/raw_crystal_2020_talk/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
-## Contributors
-
-- [your-name-here](https://github.com/your-github-user) - creator and maintainer
+- [Ian Rash](https://github.com/redcodefinal) - creator and maintainer
