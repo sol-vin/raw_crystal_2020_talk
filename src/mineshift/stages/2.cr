@@ -38,12 +38,19 @@ module Mineshift
   MAX_LEVELS   = 4
 
   CENTER_RECT_HEIGHT = 60
+  CENTER_RECT_MIN_WIDTH = 400
+  CENTER_RECT_MAX_WIDTH = 600
+  CENTER_RECT_MIN_DEVIATION = 20
+  CENTER_RECT_MAX_DEVIATION = 100
+  CENTER_RECT_MAX_PERLIN_DEVIATION = 150
 
   class_property seed : Int32 = 1
 
   module Seeds
-    DIMINISH = 0.01
-    COLORS = (:colors.hash * DIMINISH).to_f32
+    COLORS = 1.1_f32
+    CENTER_RECT_DEVIATION = 1.2_f32
+    CENTER_RECT_PERLIN_DEVIATION = 1.3_f32
+    CENTER_RECT_WIDTH = 1.4_f32
   end
 
   def self.make
@@ -63,10 +70,27 @@ module Mineshift
       end
 
       center_rects = [] of NamedTuple(x: Float64, y: Float64, w: Float64, h: Float64)
-      current_center_rect_y = 0
+      current_center_rect_y = 0.0
       center_rects_index = 0
       while current_center_rect_y < HEIGHT
-        
+        cr_x = perlin.prng_int(center_rects_index, CENTER_RECT_MIN_DEVIATION, CENTER_RECT_MAX_DEVIATION, Seeds::CENTER_RECT_DEVIATION)
+        cr_x += perlin.noise(center_rects_index, Seeds::CENTER_RECT_PERLIN_DEVIATION) * CENTER_RECT_MAX_PERLIN_DEVIATION
+        cr_w = perlin.prng_int(center_rects_index, CENTER_RECT_MIN_WIDTH, CENTER_RECT_MAX_WIDTH, Seeds::CENTER_RECT_WIDTH)
+        cr_x += cr_w/4.0
+        center_rects << {x: cr_x.to_f64, y: current_center_rect_y.to_f64, w: cr_w.to_f64, h: CENTER_RECT_HEIGHT.to_f64}
+        current_center_rect_y += CENTER_RECT_HEIGHT
+        center_rects_index += 1
+      end
+
+      center_rects.each do |c_rect|
+        ctx.rectangle do |rect|
+          rect.x = c_rect[:x]
+          rect.y = c_rect[:y]
+          rect.width = c_rect[:w]
+          rect.height = c_rect[:h]
+          rect.fill = "black"
+          rect
+        end
       end
     end
   end
@@ -74,6 +98,7 @@ end
 
 
 get "/" do |env|
+  Mineshift.seed += 1
   Mineshift.make
 end
 

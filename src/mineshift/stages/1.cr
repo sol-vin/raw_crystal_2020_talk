@@ -64,6 +64,7 @@ end
 
 
 get "/" do |env|
+  Mineshift.seed += 1
   Mineshift.make
 end
 

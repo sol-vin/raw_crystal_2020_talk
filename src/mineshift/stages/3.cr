@@ -30,16 +30,33 @@ module Mineshift
     {bg: "#f0f465", levels: ["#9cec5b", "#50c5b7", "#6184db", "#533a71"]},
     {bg: "#ad2831", levels: ["#800e13", "#640d14", "#38040e", "#250902"]},
   ]
+
   HEIGHT       = 1000
   WIDTH        =  800
   FRAME_COPIES =    2
   FRAME_HEIGHT = HEIGHT * FRAME_COPIES
   MAX_LEVELS   = 4
 
+  CENTER_RECT_HEIGHT = 60
+  CENTER_RECT_MIN_WIDTH = 400
+  CENTER_RECT_MAX_WIDTH = 600
+  CENTER_RECT_MIN_DEVIATION = 20
+  CENTER_RECT_MAX_DEVIATION = 100
+  CENTER_RECT_MAX_PERLIN_DEVIATION = 150
+
   class_property seed : Int32 = 1
+
+  module Seeds
+    COLORS = 1.1_f32
+    CENTER_RECT_DEVIATION = 1.2_f32
+    CENTER_RECT_PERLIN_DEVIATION = 1.3_f32
+    CENTER_RECT_WIDTH = 1.4_f32
+  end
 
   def self.make
     perlin = PerlinNoise.new(seed)
+    colors = perlin.prng_item(0, COLORS, Seeds::COLORS)
+
     Celestine.draw do |ctx|
       ctx.view_box = {x: 0, y: 0, w: WIDTH, h: HEIGHT}
 
@@ -48,12 +65,62 @@ module Mineshift
         r.y = 0
         r.width = WIDTH
         r.height = HEIGHT
+        r.fill = colors[:bg]
+        r
+      end
 
+      center_rects = [] of NamedTuple(x: Float64, y: Float64, w: Float64, h: Float64)
+      current_center_rect_y = 0.0
+      center_rects_index = 0
+      while current_center_rect_y < HEIGHT
+        cr_x = perlin.prng_int(center_rects_index, CENTER_RECT_MIN_DEVIATION, CENTER_RECT_MAX_DEVIATION, Seeds::CENTER_RECT_DEVIATION)
+        cr_x += perlin.noise(center_rects_index, Seeds::CENTER_RECT_PERLIN_DEVIATION) * CENTER_RECT_MAX_PERLIN_DEVIATION
+        cr_w = perlin.prng_int(center_rects_index, CENTER_RECT_MIN_WIDTH, CENTER_RECT_MAX_WIDTH, Seeds::CENTER_RECT_WIDTH)
+        cr_x += cr_w/4.0
+        center_rects << {x: cr_x.to_f64, y: current_center_rect_y.to_f64, w: cr_w.to_f64, h: CENTER_RECT_HEIGHT.to_f64}
+        current_center_rect_y += CENTER_RECT_HEIGHT
+        center_rects_index += 1
+      end
+
+      mask = ctx.mask do |mask|
+        mask.id = "center-rects"
+
+        mask.rectangle do |r|
+          r.x = 0
+          r.y = 0
+          r.width = WIDTH
+          r.height = HEIGHT
+          r.fill = "white"
+          r
+        end
+
+        center_rects.each do |c_rect|
+          mask.rectangle do |rect|
+            rect.x = c_rect[:x]
+            rect.y = c_rect[:y]
+            rect.width = c_rect[:w]
+            rect.height = c_rect[:h]
+            rect.fill = "black"
+            rect
+          end
+        end
+        mask
+      end
+
+      
+      ctx.rectangle do |r|
+        r.x = 0
+        r.y = 0
+        r.width = WIDTH
+        r.height = HEIGHT
+        r.fill = colors[:levels][0]
+        r.set_mask mask
         r
       end
     end
   end
 end
+
 
 get "/" do |env|
   Mineshift.seed += 1
