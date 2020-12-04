@@ -30,6 +30,7 @@ module Mineshift
     {bg: "#f0f465", levels: ["#9cec5b", "#50c5b7", "#6184db", "#533a71"]},
     {bg: "#ad2831", levels: ["#800e13", "#640d14", "#38040e", "#250902"]},
   ]
+
   HEIGHT       = 1000
   WIDTH        =  800
   FRAME_COPIES =    2
@@ -38,6 +39,13 @@ module Mineshift
 
   class_property seed : Int32 = 1
 
+  module Seeds
+    COLORS = 1.1_f32
+    CENTER_RECT_DEVIATION = 1.2_f32
+    CENTER_RECT_PERLIN_DEVIATION = 1.3_f32
+    CENTER_RECT_WIDTH = 1.4_f32
+  end
+  
   def self.make
     perlin = PerlinNoise.new(seed)
     Celestine.draw do |ctx|
@@ -48,12 +56,13 @@ module Mineshift
         r.y = 0
         r.width = WIDTH
         r.height = HEIGHT
-
+        
         r
       end
     end
   end
 end
+
 
 get "/" do |env|
   Mineshift.seed += 1

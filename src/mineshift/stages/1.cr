@@ -40,8 +40,10 @@ module Mineshift
   class_property seed : Int32 = 1
 
   module Seeds
-    DIMINISH = 0.01
-    COLORS = (:colors.hash * DIMINISH).to_f32
+    COLORS = 1.1_f32
+    CENTER_RECT_DEVIATION = 1.2_f32
+    CENTER_RECT_PERLIN_DEVIATION = 1.3_f32
+    CENTER_RECT_WIDTH = 1.4_f32
   end
 
   def self.make

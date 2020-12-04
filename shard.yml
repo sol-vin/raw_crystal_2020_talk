@@ -30,7 +30,8 @@ targets:
     main: src/mineshift/stages/4.cr
   mineshift5:
     main: src/mineshift/stages/5.cr
-
+  mineshift6:
+    main: src/mineshift/stages/6.cr
 crystal: 0.35.1
 
 license: MIT
