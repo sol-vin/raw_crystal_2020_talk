@@ -32,6 +32,10 @@ targets:
     main: src/mineshift/stages/5.cr
   mineshift6:
     main: src/mineshift/stages/6.cr
+  perlin_noise:
+    main: src/perlin/noise.cr
+  perlin_noise_normal:
+    main: src/perlin/normalized_noise.cr
 crystal: 0.35.1
 
 license: MIT
