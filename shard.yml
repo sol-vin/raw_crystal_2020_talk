@@ -14,8 +14,6 @@ dependencies:
     branch: master
 
 targets:
-  app:
-    main: src/app.cr
   sandbox:
     main: src/sandbox.cr
   mineshift0:
