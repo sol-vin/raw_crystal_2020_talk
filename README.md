@@ -6,19 +6,21 @@ Project for the talk "Generative Art, Crystal, and Celestine.
 
 ## Slides
 
-Available in [slides](/slides)
+Available in [slides](/slides) and [google docs](https://docs.google.com/presentation/d/11QczXRinWQEc1KCBqCnxFDVtV3zcOp9Pi-WscyDktzQ/edit?usp=sharing)
 
 ## Installation
 
-For examples and breakdown of Mineshift:
+For breakdown of Mineshift:
 
 ```
-shards build app && ./bin/app [port number or blank for 3000]
+shards build mineshift[1-6] && ./bin/mineshift[1-6]
+
 ```
 
 For compiling your sandbox project
 ```
-shards build sandbox && ./bin/sandbox [port number or blank for 3000]
+shards build sandbox && ./bin/sandbox
+
 ```
 
 ## Usage
