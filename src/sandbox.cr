@@ -8,7 +8,8 @@ get "/" do |env|
   @@seed += 1
   perlin = PerlinNoise.new(seed)
   Celestine.draw do |ctx|
-    # Celestine DSL code goes here
+    # Put your awesome code here bro!
+    # Have fun and stay safe!
   end
 end
 
