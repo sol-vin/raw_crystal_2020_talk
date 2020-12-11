@@ -1,8 +1,10 @@
-# Generative Art, Crystal, and Celeatine - A Raw Crystal 2020 Talk
+# Generative Art, SVG, and Celestine - A Raw Crystal 2020 Talk
 
-Project for the talk "Generative Art, Crystal, and Celestine.
+Project for the talk "Generative Art, SVG, and Celestine.
 
 [Register Here for the event](https://www.eventbrite.co.uk/e/raw-crystal-2020-tickets-127439094763)
+
+The talk will be on Dec. 11th @ 5:30 pm UTC, 9:30 am PST, or 12:30 pm EST.
 
 ## Slides
 
