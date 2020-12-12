@@ -2,9 +2,7 @@
 
 Project for the talk "Generative Art, SVG, and Celestine.
 
-[Register Here for the event](https://www.eventbrite.co.uk/e/raw-crystal-2020-tickets-127439094763)
-
-The talk will be on Dec. 11th @ 5:30 pm UTC, 9:30 am PST, or 12:30 pm EST.
+[Video](https://youtu.be/WVk8Wstc5Zw?t=6308)
 
 ## Slides
 
